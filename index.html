@@ -9,8 +9,14 @@
       -webkit-user-select: none; /* ドラッグはテキスト選択と競合するので禁止 */
     }
   </style>
+  <script type="text/javascript">
+    function notification() {
+        new Notification("Hello World");
+    }
+  </script>
 </head>
 <body>
   <p>Hello World</p>
+  <button onclick="notification()">notification</button>
 </body>
 </html>
