@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Sample</title>
+  <style>
+    body{
+      -webkit-app-region: drag; /* ドラッグ可能に */
+      -webkit-user-select: none; /* ドラッグはテキスト選択と競合するので禁止 */
+    }
+  </style>
+  <script type="text/javascript">
+    function notification() {
+        new Notification("Hello World");
+    }
+  </script>
 </head>
 <body>
   <p>Hello World</p>
+  <button onclick="notification()">notification</button>
 </body>
 </html>
