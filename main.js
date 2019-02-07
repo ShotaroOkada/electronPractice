@@ -8,9 +8,6 @@ const Tray = electron.Tray;// メニューバーにアイコンを表示させ�
 var appIcon = null// アイコン画像を入れる変数
 const Menu = electron.Menu;
 
-
-
-
 // 全てのウィンドウが閉じたら終了
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -25,6 +22,13 @@ app.on('ready', function() {
     'height': 600,
     'transparent': false, //trueで背景色を透明にできる
     'frame': true
+  });
+
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
+
+    // ウィンドウが閉じられたらアプリも終了
+  mainWindow.on('closed', function() {
+     mainWindow = null;
   });
 
   appIcon = new Tray(__dirname + '/images/icon.jpg');
@@ -44,7 +48,7 @@ app.on('ready', function() {
   // アイコンにマウスオーバーした時の説明
   appIcon.setToolTip('This is sample.');
 
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  
 
   // アプリケーションメニュー設定
 var menu = Menu.buildFromTemplate([
@@ -72,9 +76,4 @@ var menu = Menu.buildFromTemplate([
 ]);
 Menu.setApplicationMenu(menu);
 
-
-  // ウィンドウが閉じられたらアプリも終了
-  mainWindow.on('closed', function() {
-    mainWindow = null;
-  });
 });
